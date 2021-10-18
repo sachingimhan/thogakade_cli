@@ -28,3 +28,15 @@ def validate(argsCount=1, paramType=1):
             return func(*args, **kwargs)
         return inner_fun
     return wapper
+
+
+def get_inputs(params):
+    def wapper(func):
+        def innder_fun(*args, **kwargs):
+            new_params = {}
+            for x in range(0, len(params)):
+                i = input(f"Enter {params[x]}: ")
+                new_params[params[x]] = i
+            return func(*args, **new_params)
+        return innder_fun
+    return wapper

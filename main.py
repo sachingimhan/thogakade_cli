@@ -4,6 +4,7 @@ import json
 import os
 from app.Item import Item
 from app.User import User
+from app.validation.validation import get_inputs
 
 banner = """
 ██████  ██    ██     ██████   ██████  ███████ 
@@ -14,12 +15,20 @@ banner = """
                                               
 """
 
+
+user = User()
+
 def init():
     if not os.path.exists('db/'):
         os.makedirs('db/items')
         os.makedirs('db/users')
     else:
         print('Already initialized the System')
+
+
+@get_inputs(params=['userName', 'password'])
+def user_reg(userName, password):
+    user.registration(userName, password)
 
 
 if __name__ == "__main__":
@@ -39,8 +48,7 @@ if __name__ == "__main__":
         if section == "item":
             item = Item()
             if commend == "add":
-                item.save(10,10,10)
+                item.save(10, 10, 10)
         if section == "user":
-            user = User()
             if commend == "reg":
-                user.registration("Sachin","1234")
+                user_reg()
