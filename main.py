@@ -18,6 +18,7 @@ banner = """
 
 user = User()
 
+
 def init():
     if not os.path.exists('db/'):
         os.makedirs('db/items')
@@ -26,9 +27,13 @@ def init():
         print('Already initialized the System')
 
 
-@get_inputs(params=['userName', 'password'])
-def user_reg(userName, password):
-    user.registration(userName, password)
+@get_inputs(params=['email', 'password'])
+def user_reg_inputs(email, password):
+    user.registration(email, password)
+
+@get_inputs(params=['email','password'])
+def user_login_inputs(email, password):
+    user.login(email,password)
 
 
 if __name__ == "__main__":
@@ -51,4 +56,6 @@ if __name__ == "__main__":
                 item.save(10, 10, 10)
         if section == "user":
             if commend == "reg":
-                user_reg()
+                user_reg_inputs()
+            elif commend == "login":
+                user_login_inputs()
