@@ -17,6 +17,7 @@ banner = """
 
 
 user = User()
+item = Item()
 
 
 def init():
@@ -35,6 +36,13 @@ def user_reg_inputs(email, password):
 def user_login_inputs(email, password):
     user.login(email,password)
 
+def user_view_session():
+    user.view_session()
+
+@get_inputs(params=['id','name','price','qty'])
+def item_add(id,name,price,qty):
+    item.save(id,name,price,qty)
+
 
 if __name__ == "__main__":
     print(banner)
@@ -51,11 +59,12 @@ if __name__ == "__main__":
         commend = args[1]
 
         if section == "item":
-            item = Item()
             if commend == "add":
-                item.save(10, 10, 10)
+                item_add()
         if section == "user":
             if commend == "reg":
                 user_reg_inputs()
             elif commend == "login":
                 user_login_inputs()
+            elif commend == "session":
+                user_view_session()
