@@ -1,6 +1,4 @@
 import sys
-import pickle
-import json
 import os
 from app.Item import Item
 from app.User import User
@@ -13,6 +11,18 @@ banner = """
 ██         ██        ██      ██    ██      ██ 
 ██         ██        ██       ██████  ███████ 
                                               
+"""
+user_help="""
+-------------------------------------------------------------------------
+| section  |   commend   |   description                                |
+-------------------------------------------------------------------------
+|   db     |    system   |   This will initialize system with db folder.|
+|-----------------------------------------------------------------------|
+|   user   |    reg      |   This will allows user to register.         |
+|          |    login    |   This will allows user to login.            |
+-------------------------------------------------------------------------
+
+    
 """
 
 
@@ -39,6 +49,9 @@ def user_login_inputs(email, password):
 def user_view_session():
     user.view_session()
 
+def item_get_all():
+    item.getAll()
+
 @get_inputs(params=['id','name','price','qty'])
 def item_add(id,name,price,qty):
     item.save(id,name,price,qty)
@@ -49,11 +62,13 @@ if __name__ == "__main__":
     args = sys.argv[1:]
 
     if len(args) <= 0:
-        print("Arguments Not Found! Please Provide arguments <section> <commend>")
+        print(user_help,"\nArguments Not Found! Please Provide arguments <section> <commend>")
     elif args[0] == "system" and args[1] == "init":
         init()
     elif not os.path.exists('db'):
         print('Please initialize the system before use.!\nuse main.py system init')
+    elif args[0] == "help":
+        print(user_help)
     else:
         section = args[0]
         commend = args[1]
@@ -61,6 +76,8 @@ if __name__ == "__main__":
         if section == "item":
             if commend == "add":
                 item_add()
+            elif commend == "all":
+                item_get_all()
         if section == "user":
             if commend == "reg":
                 user_reg_inputs()

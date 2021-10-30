@@ -22,9 +22,14 @@ main.py user login
 
 ## Item
 This commend user for create update delete and view all the Items
-### create
+### add
 ```
 main.py item add
+```
+### all
+This commend will allows user to get all items
+```
+main.py item all
 ```
 
 
