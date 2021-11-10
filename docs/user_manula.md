@@ -31,7 +31,3 @@ This commend will allows user to get all items
 ```
 main.py item all
 ```
-
-
-
-<!-- https://github.com/ClassExamples/IJSE_PYTHON_ASSINGMENT_1 -->
