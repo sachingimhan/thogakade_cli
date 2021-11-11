@@ -3,6 +3,8 @@
 ## Instructions
 ----------
 This is a sample project for gain python knowlage and it fetures. This System base on files.
+- Presentation of the system [here.](https://docs.google.com/presentation/d/1swsv3x1HRuUddwLmO9dlDPNL6hT4ge3Jmev5P5G_Vd4/edit?usp=sharing)
+- Demonstration video [hrer.](https://link)
 ### **System initialize**
 #### Initialize 
 This will initialize system with db folder
