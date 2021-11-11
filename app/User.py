@@ -1,6 +1,7 @@
 import os
 import json
 from app.validation.validation import validate, KWARGS, ARGS
+from beautifultable import BeautifulTable
 
 
 __uid_file__ = "db/uid.json"
@@ -70,6 +71,9 @@ class User:
             }, f)
 
     def view_session(self):
-        with open(__db_user_session__,'r') as f:
-            sess =  json.load(f)
-            print(f"Current User ID: {sess['id']}\nCurrent User Email: {sess['email']}")
+        with open(__db_user_session__, 'r') as f:
+            sess = json.load(f)
+            table = BeautifulTable()
+            table.columns.header = ["Current User Id", "Current User Email"]
+            table.rows.append([sess['id'], sess['email']])
+            print(table)
