@@ -11,15 +11,19 @@ class Item:
 
     @validate(4, ARGS)
     def save(self, id, name, price, qty):
-        with open(f"{__db_items__}/{name}.json", 'w') as f:
-            data = {
-                'id': id,
-                'name': name,
-                'price': price,
-                'qty': qty
-            }
-            json.dump(data, f)
-        print("Item Saved successfully.!")
+        try:
+            with open(f"{__db_items__}/{name}.json", 'w') as f:
+                data = {
+                    'id': id,
+                    'name': name,
+                    'price': price,
+                    'qty': qty
+                }
+                json.dump(data, f)
+            print("Item Saved successfully.!")
+        except Exception as e:
+            print("Item Fail to Save.!")
+        
 
     def __get_item_list(self, name):
         try:

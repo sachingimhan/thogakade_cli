@@ -15,17 +15,6 @@ banner = """
 ██         ██        ██       ██████  ███████ 
                                               
 """
-user_help = """
--------------------------------------------------------------------------
-| Section  |   Commend   |   Description                                |
--------------------------------------------------------------------------
-|   db     |    system   |   This will initialize system with db folder.|
-|-----------------------------------------------------------------------|
-|   user   |    reg      |   This will allows user to register.         |
-|          |    login    |   This will allows user to login.            |
--------------------------------------------------------------------------
-
-"""
 
 
 user = User()
@@ -38,9 +27,24 @@ def init():
         os.makedirs('db/items')
         os.makedirs('db/users')
         os.makedirs('db/orders')
+        print("System initialized.!")
     else:
         print('Already initialized the System')
 
+
+def user_help():
+    table = BeautifulTable()
+    table.columns.header=["Section","Commend","Description"]
+    table.rows.append(["system","init","Initializing System"])
+    table.rows.append(["user","reg","Can register to the system"])
+    table.rows.append(["","login","Can login to the system"])
+    table.rows.append(["","session","Can view current user"])
+    table.rows.append(["item","add","Can add new items to the system"])
+    table.rows.append(["","all","Can view all items in the system"])
+    table.rows.append(["","find","Can find specific item in the system"])
+    table.rows.append(["order","place","Can place order to the system"])
+    table.rows.append(["","all","Can view current user's all orders"])
+    print(table)
 
 @get_inputs(params=['email', 'password'])
 def user_reg_inputs(email, password):
@@ -122,14 +126,14 @@ if __name__ == "__main__":
     args = sys.argv[1:]
 
     if len(args) <= 0:
-        print(
-            user_help, "\nArguments Not Found! Please Provide arguments <section> <commend>")
+        user_help()
+        print("\nArguments Not Found! Please Provide arguments <section> <commend>")
     elif args[0] == "system" and args[1] == "init":
         init()
     elif not os.path.exists('db'):
         print('Please initialize the system before use.!\nuse main.py system init')
     elif args[0] == "help":
-        print(user_help)
+        user_help()
     else:
         section = args[0]
         commend = args[1]
