@@ -133,11 +133,8 @@ if __name__ == "__main__":
         section = args[0]
         commend = args[1]
 
-        user = User()
-        item = Item()
-        order = Order()
-
         if section == "item":
+            item = Item()
             if commend == "add":
                 item_add()
             elif commend == "all":
@@ -147,6 +144,7 @@ if __name__ == "__main__":
             else:
                 error_commend()
         if section == "user":
+            user = User()
             if commend == "reg":
                 user_reg_inputs()
             elif commend == "login":
@@ -156,6 +154,7 @@ if __name__ == "__main__":
             else:
                 error_commend()
         if section == "order":
+            order = Order()
             if commend == "place":
                 order_place()
             if commend == "all":

@@ -16,12 +16,16 @@ class Order:
     item = None
 
     def __init__(self):
-        with open(__db_user_session__, 'r') as f:
-            data = json.load(f)
-            self.email = data['email']
-            self.id = data['id']
-        self.__get_oid()
-        self.item = Item()
+        try:
+            with open(__db_user_session__, 'r') as f:
+                data = json.load(f)
+                self.email = data['email']
+                self.id = data['id']
+            self.__get_oid()
+            self.item = Item()
+        except Exception as e:
+            print("User Not Login.!")
+        
 
     def __get_oid(self):
         if os.path.exists(__db_oid__):
