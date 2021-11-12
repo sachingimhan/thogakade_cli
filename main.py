@@ -17,11 +17,6 @@ banner = """
 """
 
 
-user = User()
-item = Item()
-order = Order()
-
-
 def init():
     if not os.path.exists('db/'):
         os.makedirs('db/items')
@@ -137,6 +132,10 @@ if __name__ == "__main__":
     else:
         section = args[0]
         commend = args[1]
+
+        user = User()
+        item = Item()
+        order = Order()
 
         if section == "item":
             if commend == "add":
