@@ -16,6 +16,7 @@ banner = """
                                               
 """
 
+item = Item()
 
 def init():
     if not os.path.exists('db/'):
